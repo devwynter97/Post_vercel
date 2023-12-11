@@ -1,0 +1,59 @@
+{% extends 'blog/base.html'%}
+{%load static%}
+<!doctype html>
+<html lang="en">
+
+  <head>
+
+    {% block page_css%}
+    <link href="{%static 'User/css/sign-in.css'%}" rel="stylesheet">
+    {%endblock page_css%}
+    
+  </head>
+ 
+  <body class="text-center ">
+  
+  {% if messages %}
+    {%for message in messages%}
+    <div class="container">
+      <div class="alert alert-{{ message.tags}}" role="alert">
+        {{message}}
+      </div>
+    </div>
+    {% endfor%}
+    {% endif %}
+
+    
+    {% block content%}
+
+
+
+
+   <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <form method="POST" class="form-signin " style="color: white;">
+      {% csrf_token%}
+       
+      {{ form.as_p }}         
+   
+        
+     
+     <br>
+     <button   type="submit" class=" my-3 btn btn-outline-primary">Sign Up</button>
+    </form>
+      
+
+   </div>
+
+
+
+
+      {%endblock content%}
+    
+  </body>
+</html>
+
+
+
+
+

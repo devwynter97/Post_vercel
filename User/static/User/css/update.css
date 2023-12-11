@@ -1,0 +1,9 @@
+html,body{
+    height: auto;
+    width: auto;
+}
+
+.card-header{
+    background-color: rgb(67, 82, 102);
+    color: white;
+}

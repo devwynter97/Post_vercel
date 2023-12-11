@@ -1,0 +1,31 @@
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLogin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLoginLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLoginLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+          <form method="POST" class="form-signin " style="color: black;" action="{% url 'user-sign-in'%}">
+            <div class="modal-body">
+              {% csrf_token%}
+            
+              {{ form.as_p }}         
+          
+            </div>      
+              
+          
+          <br>
+          <button   type="submit" class=" my-3 btn btn-outline-primary">Sign Up</button>
+          </form>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

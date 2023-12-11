@@ -1,0 +1,317 @@
+{% extends 'blog/base.html'%}
+{%load static%}
+
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="{%static 'User/js/color-modes.js'%}"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>Offcanvas navbar template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/offcanvas-navbar/">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    {% block page_css%}
+ 
+<!-- <link href="{%static 'User/css/bootstrap.min.css'%}" rel="stylesheet"> -->
+<!-- <link href="{%static 'User/css/offcanvas-navbar.css'%}" rel="stylesheet"> -->
+<link rel="stylesheet" href="{% static 'User/css/update.css'%}">
+{%endblock page_css%}
+<!-- 
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      
+    
+    </style> -->
+
+    
+    <!-- Custom styles for this template -->
+
+
+    
+  </head>
+  <body class="bg-body-tertiary" >
+
+    
+{% block content%}
+
+{% if messages%}
+    {%for message in messages%}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {%endfor%}
+    {%endif%}
+<main class="container"  style="box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);">
+  
+  <!-- Update screen -->
+  <div class="container"  >
+    <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm"  >
+      <img class="me-3" src="{%static 'User/assets/bootstrap-logo-white.svg'%}" alt="" width="48" height="38">
+      <div class="lh-1">
+      
+          <span><h1 class="h6 mb-0 text-white lh-1">Comments: <strong> <a href="{% url 'user-profile'%}"> {{user}} ({{user.first_name}} {{user.last_name}})</a> </strong>  </h1>
+          </span>
+        
+        
+      </div>
+    </div>
+    <h6 class="border-bottom pb-2 mb-0 text-white">Recent updates</h6>
+    <div class="my-3 p-3 text-white rounded shadow-sm scroll" style="overflow-y: auto; height: 600px;" >
+     
+  
+  
+      {%for post in posts%}
+      <div class="text-left text-white  pt-3">
+        <!-- <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{post.author}}</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+         -->
+        <p class="pb-3 mb-0 small lh-sm border-bottom ">
+          <strong class="text-gray-dark">Hi, @{{post.title}}</strong>
+          <br>
+          <small class=" text-gray-dark">Message:</small>
+          {{post.content}}
+        </p>
+      </div>
+      {%endfor%}
+      
+   
+      
+    </div>
+
+  
+  
+   
+  </div>
+
+
+
+
+
+  <!-- Suggestions -->
+  <!-- <h6 class="border-bottom pb-2 mb-0 text-white">Suggestions</h6>
+  <div class="my-3 p-3 rounded text-white shadow-sm overflow-auto" style="height: 20%;">
+    
+
+    {% for user in author%}
+
+    <div class="d-flex text-white pt-3" >
+      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        <div class=" text-left">
+          <strong class="text-gray-dark">{{user.first_name}} {{ user.last_name}}</strong>
+          <a href="#">Follow</a>
+        </div>
+        <span class="">@{{user.username}}</span>
+      </div>
+    </div>
+    {% endfor%}
+    <div class="text-left">
+      <small class="text-left text-end mt-3">
+        <a href="#">All suggestions</a>
+      </small>
+    </div>
+
+  </div> -->
+
+
+<!-- Off canvas -->
+<div class="offcanvas offcanvas-start" style="opacity: 80%; background-color:#e8eaebbd ;color: white;" tabindex="-1" id="sidebar" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Comments Posted</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+
+    <div>
+      {% for comment in comments%}
+      <div class="card my-2" style="width: auto;">
+        <div class="card-header">
+          <strong>User: {{comment.title}}</strong>
+          <a type="button" class="btn-close" aria-label="Close" style="float: right;" href="{% url 'user-delete-comment' comment.id%}"></a>
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">{{comment.title}}</h5> -->
+          
+          <p>
+           {{comment.content}}
+           
+          </p>
+          
+        </div>
+        <!-- <div class="card-footer" style="background-color: rgb(128, 147, 172);">
+          <a class="icon-link" href="{% url 'user-delete-comment' comment.id%}">
+            
+           Delete
+          </a>
+        </div> -->
+      </div>
+       
+          
+      
+      {% endfor%}
+    </div>
+    
+  </div>
+</div>
+
+</main>
+
+
+
+<!-- Post Comments Modal -->
+     
+<div class="text-left">
+  
+  <a class="btn-outline-light  my-2" data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="offcanvasExample">
+    Posted Comments
+  </a>
+
+</div>
+
+<div class="text-left">
+  <span></span>
+  <a  class="btn-outline-light  " data-bs-toggle="modal" data-bs-target="#staticBackdrop_update">
+    PostIt? - Add comments
+  </a>
+  
+
+  <div class="modal fade " id="staticBackdrop_update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content "style="background-color: rgb(67, 82, 102);">
+        <div class="modal-header text-white">
+          <h1 class="modal-title fs-5 te" id="staticBackdropLabel">Update Details </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-white">
+            <form class="row g-3" id="update-form" method="POST" action="{% url 'user-add-review' %}">
+                {% csrf_token %}
+                
+                <div class="col-md-6 text-left">
+                    <label for="inputUsername"  class="form-label justify-content-md-start ">Username</label>
+                    <!-- <input type="text" class="form-control" id="inputUsername"> -->
+
+                    <div class="dropdown">
+                           <select class="form-select form-select-sm" id = 'inputUsername'autocomplete = 'on' name = 'username' aria-label="Small select example">
+                            <option selected></option>
+                            {% for data in users%}
+                            {% if user.username != data.username%}
+                            <option  value="{{data.username}}">{{data.username}} - {{data.first_name}} {{data.last_name}}</option>
+                            {% endif%}
+                            {% endfor%}
+                         
+                          </select>
+                       
+                      </div>    
+
+                  </div>
+                  <div class="col-md-10 text-left text-white">
+                    <label for="inputComments" class="form-label justify-content-md-start">Comments</label>
+                    <textarea type="text"  name= 'Comments' class="form-control" id="inputComments"> </textarea>
+                  </div>
+                  <!-- <button type="button" class="btn btn-outline-secondary text-white" data-bs-dismiss="modal">Close</button> -->
+              </form>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-outline-secondary text-white" data-bs-dismiss="modal">Close</button> -->
+          <button type="submit" class="btn btn-outline-primary" form="update-form"  data-bs-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ 
+{% endblock content%}
+
+
+<script src="{%static 'User/assets/bootstrap.bundle.min.js'%}"></script>
+
+    <script src="offcanvas-navbar.js"></script>
+  
+  </body>
+</html>

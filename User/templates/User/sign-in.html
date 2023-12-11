@@ -1,0 +1,50 @@
+{% extends 'blog/base.html'%}
+{%load static%}
+
+
+<!doctype html>
+<html lang="en" style="height: 100vh;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Signin Template · Bootstrap v4.6</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/sign-in/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<!-- <link href="{%static 'User/css/bootstrap.min.css'%}" rel="stylesheet" > -->
+
+
+    
+    <!-- Custom styles for this template -->
+   
+
+    {% block page_css%}
+    <link href="{%static 'User/css/sign-in.css'%}" rel="stylesheet">
+    {%endblock page_css%}
+    
+
+  </head>
+ {% block content%}
+  <body class="text-center" style="height: 100vh" >  
+      <div class="container" style="height: 20%;">      
+      <img class="mb-4" src="{%static 'User/assets/bootstrap-logo.svg'%}" alt="" width="72" height="72">
+      <form method="POST" class="form-signin" style="color: white;">
+        {% csrf_token%}
+     
+            {{form.as_p}}
+       
+       <br>
+        <button type="submit" class="btn btn-outline-primary">Log In</button>
+      </form>
+
+      </div>
+  
+{% endblock content%}
+  </body>
+</html>
