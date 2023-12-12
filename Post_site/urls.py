@@ -30,6 +30,8 @@ urlpatterns = [
 ]
 
 
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+
 #add media route to URL patterns
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
